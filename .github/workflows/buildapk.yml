@@ -23,8 +23,8 @@ jobs:
       - name: Checkout submodules
         uses: actions/checkout@v4
         with:
-          repository: ChatGPTNextWeb/ChatGPT-Next-Web
-          path: ChatGPT-Next-Web
+          repository: tianzhentech/NeatChat
+          path: NeatChat
           fetch-depth: 1
 
       - name: Setup NodeJs
@@ -39,21 +39,21 @@ jobs:
           flutter-version: 3.24.1
 
       - name: Install Dependencies
-        working-directory: ./ChatGPT-Next-Web
+        working-directory: ./NeatChat
         run: yarn add @cloudflare/next-on-pages && yarn install --frozen-lockfile
 
       - name: Cache node modules
         uses: actions/cache@v4
         with:
-          path: ./ChatGPT-Next-Web/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/ChatGPT-Next-Web/yarn.lock') }}
+          path: ./NeatChat/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/NeatChat/yarn.lock') }}
 
       - name: Build Site
-        working-directory: ./ChatGPT-Next-Web
+        working-directory: ./NeatChat
         run: npx @cloudflare/next-on-pages@1
 
       - name: Zip HTML
-        working-directory: ./ChatGPT-Next-Web/.vercel/output
+        working-directory: ./NeatChat/.vercel/output
         run: |
           mv static web
           mkdir -p ../../../assets
