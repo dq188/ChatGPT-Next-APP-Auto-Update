@@ -10,6 +10,14 @@ on:
         description: 'Release tag version'
         required: true
         default: 'v0.0.0'
+      repository:
+        description: 'Repository to clone (e.g., username/repo)'
+        required: true
+        default: 'tianzhentech/NeatChat'
+      branch:
+        description: 'Branch to checkout (e.g., main, develop)'
+        required: true
+        default: 'main'
 
 jobs:
   release:
