@@ -25,6 +25,7 @@ jobs:
         with:
           repository: tianzhentech/NeatChat
           path: NeatChat
+          ref: preview
           fetch-depth: 1
 
       - name: Setup NodeJs
