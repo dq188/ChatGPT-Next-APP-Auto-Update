@@ -23,7 +23,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-
     steps: 
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,10 +30,10 @@ jobs:
       - name: Checkout submodules
         uses: actions/checkout@v4
         with:
-          repository: tianzhentech/NeatChat
+          repository: ${{ github.event.inputs.repository || 'tianzhentech/NeatChat' }}
           path: NeatChat
-          ref: preview
           fetch-depth: 1
+          ref: ${{ github.event.inputs.branch || 'main' }}
 
       - name: Setup NodeJs
         uses: actions/setup-node@v4
